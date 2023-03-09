@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,5 +21,19 @@ public class Player : MonoBehaviour
         movement.Normalize();
 
         rb.velocity = movement * speed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Pickupable pickupable= other.GetComponent<Pickupable>();
+        if(pickupable!= null)
+        {
+            IncreaseSize();
+        }
+    }
+
+    private void IncreaseSize()
+    {
+        transform.localScale = new Vector3(transform.localScale.x + 1, transform.localScale.y + 1, transform.localScale.z + 1);
     }
 }
