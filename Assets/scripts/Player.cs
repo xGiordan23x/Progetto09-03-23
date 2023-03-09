@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         if(pickupable!= null)
         {
             IncreaseSize();
+            Destroy(pickupable.gameObject);
         }
     }
 
